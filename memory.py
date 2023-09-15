@@ -9,42 +9,49 @@ Exercises:
 5. Use letters instead of tiles.
 """
 
-from random import *
-from turtle import *
+# Se importan las librerías necesarias para el funcionamiento del programa.
 
-from freegames import path
+import random as rd
+import turtle as tt
+import freegames as fg
 
-car = path('car.gif')
+# Se definen las variables necesarias para el funcionamiento del programa.
+
+car = fg.path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 
+# Dibuja un cuadrado en la posición (x, y).
+
 
 def square(x, y):
-    """Draw white square with black outline at (x, y)."""
-    up()
-    goto(x, y)
-    down()
-    color('black', 'white')
-    begin_fill()
+    tt.up()
+    tt.goto(x, y)
+    tt.down()
+    tt.color('black', 'white')
+    tt.begin_fill()
     for count in range(4):
-        forward(50)
-        left(90)
-    end_fill()
+        tt.forward(50)
+        tt.left(90)
+    tt.end_fill()
 
+
+# Convierte las coordenadas (x, y) en un índice de mosaico.
 
 def index(x, y):
-    """Convert (x, y) coordinates to tiles index."""
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
+
+# Convierte el índice de mosaico en coordenadas (x, y).
 
 
 def xy(count):
-    """Convert tiles count to (x, y) coordinates."""
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
+
+# Actualiza el marcador y los mosaicos ocultos basados en el toque.
 
 
 def tap(x, y):
-    """Update mark and hidden tiles based on tap."""
     spot = index(x, y)
     mark = state['mark']
 
@@ -56,12 +63,13 @@ def tap(x, y):
         state['mark'] = None
 
 
+# Dibuja el tablero.
+
 def draw():
-    """Draw image and tiles."""
-    clear()
-    goto(0, 0)
-    shape(car)
-    stamp()
+    tt.clear()
+    tt.goto(0, 0)
+    tt.shape(car)
+    tt.stamp()
 
     for count in range(64):
         if hide[count]:
@@ -72,20 +80,43 @@ def draw():
 
     if mark is not None and hide[mark]:
         x, y = xy(mark)
-        up()
-        goto(x + 2, y)
-        color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        tt.up()
+        tt.goto(x + 2, y)
+        tt.color('black')
+        tt.write(tiles[mark], font=('Arial', 30, 'normal'))
 
-    update()
-    ontimer(draw, 100)
+    tt.update()
+    tt.ontimer(draw, 100)
+
+# Inicializa los mosaicos ocultos.
 
 
-shuffle(tiles)
-setup(420, 420, 370, 0)
-addshape(car)
-hideturtle()
-tracer(False)
-onscreenclick(tap)
+rd.shuffle(tiles)
+
+# Se define el tamaño de la ventana
+
+tt.setup(420, 420, 370, 0)
+
+# Se define la imagen del fondo de pantalla
+
+tt.addshape(car)
+
+# Se oculta la tortuga
+
+tt.hideturtle()
+
+# Desactiva la animación de la tortuga
+
+tt.tracer(False)
+
+# Se define la función que se ejecuta al hacer click en la ventana
+
+tt.onscreenclick(tap)
+
+# Se ejecuta la función draw para que se dibuje el tablero
+
 draw()
-done()
+
+# Se ejecuta el juego
+
+tt.done()
