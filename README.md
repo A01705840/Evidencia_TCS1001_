@@ -7,3 +7,6 @@ Escogí y realicé modificaciones en el juego Tic Tac Toe. Primero clone el repo
 - Validar si una casilla ya se encuentra ocupada
 - Corregir los errores en el flake8
 Tuve que hacer al menos un commit por cada uno de los puntos y hacer merge de mi branch al main del repositorio del equipo.
+
+### Diego Antonio García Padilla (A01710777) - [Github](https://github.com/DiegoGarciaPadilla)
+Elegí el juego de Memory para realizar la actividad. En primer lugar corregí los errores que mostraba flake8. Luego, añadí la funcionalidad de contar los taps e imprimirlos en consola. Y por último, mostrar un mensaje en consola cuando el jugador gane, es decir, destape todas las casillas.
