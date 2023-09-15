@@ -10,3 +10,6 @@ Tuve que hacer al menos un commit por cada uno de los puntos y hacer merge de mi
 
 ### Diego Antonio García Padilla (A01710777) - [Github](https://github.com/DiegoGarciaPadilla)
 Elegí el juego de Memory para realizar la actividad. En primer lugar corregí los errores que mostraba flake8. Luego, añadí la funcionalidad de contar los taps e imprimirlos en consola. Y por último, mostrar un mensaje en consola cuando el jugador gane, es decir, destape todas las casillas.
+
+### María José Soto Castro A01705840 - https://github.com/A01705840
+Elegí el juego pacman. Realicé las correcciones para el juego de Pacman cumpliendo las reglas del PEP8, además de hacer modificaciones al juego original, como cambiar el tablero (a naranja y azul) y hacer que los fantasmas y pacman ir mas rápido.
