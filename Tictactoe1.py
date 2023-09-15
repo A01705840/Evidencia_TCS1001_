@@ -6,15 +6,25 @@ Ejercicios
 2. Validar si una casilla ya se encuentra ocupada.
 """
 
-from turtle import *
+from turtle import color
+from turtle import width
+from turtle import up
+from turtle import goto
+from turtle import down
+from turtle import circle
+from turtle import update
+from turtle import setup
+from turtle import hideturtle
+from turtle import tracer
+from turtle import onscreenclick
+from turtle import done
 from freegames import line
 
-
-# Define una matriz para representar el estado del tablero.
+# Define matriz para representar el estado del tablero.
 board = [[' ' for _ in range(3)] for _ in range(3)]
 
 
-# Define una función para dibujar el tablero de Tictactoe.
+# Define función para dibujar el tablero de Tictactoe.
 def grid():
     """Dibuja el tablero de Tictactoe."""
     line(-67, 200, -67, -200)  # Línea vertical izquierda.
@@ -23,7 +33,7 @@ def grid():
     line(-200, 67, 200, 67)    # Línea horizontal superior.
 
 
-# Define una función para dibujar la "X".
+# Define función para dibujar la "X".
 def drawx(x, y):
     """Dibuja la "X" para el jugador."""
     color("purple")  # Modifica el color de la línea.
@@ -31,25 +41,25 @@ def drawx(x, y):
     """Ajusta las coordenadas para centrar la "X" en el cuadro."""
     x += 16
     y += 16
-    line(x, y, x + 100, y + 100)  # Dibuja una línea diagonal (parte superior izquierda a inferior derecha).
-    line(x, y + 100, x + 100, y)  # Dibuja una línea diagonal (parte superior derecha a inferior izquierda).
-   
+    line(x, y, x + 100, y + 100)  # Dibuja una línea diagonal.
+    line(x, y + 100, x + 100, y)  # Dibuja una línea diagonal.
 
-# Define una función para dibujar la "O".
+
+# Define función para dibujar la "O".
 def drawo(x, y):
     """Dibuja la "O" para el jugador."""
     color("pink")  # Modifica el color de la línea.
     width(3)       # Modifica el ancho de la línea.
     """Ajusta las coordenadas para centrar la "O" en el cuadro."""
-    x += 67          
-    y += 67          
-    up()             
+    x += 67
+    y += 67
+    up()
     goto(x, y - 55)  # Mueve el cursor a la posición central del círculo.
-    down()           
+    down()
     circle(55)  # Dibuja un círculo de radio 55.
 
 
-# Define una función para redondear un valor a la cuadrícula con un tamaño de 133.
+# Define función para redondear valor a cuadrícula con tamaño 133.
 def floor(value):
     """Redondea el valor hacia abajo a la cuadrícula con un tamaño de 133."""
     return ((value + 200) // 133) * 133 - 200
@@ -83,7 +93,6 @@ def tap(x, y):
         update()
         board[row][col] = 'X' if player == 0 else 'O'
         state['player'] = 1 - player  # Alterna al siguiente jugador
-
 
 
 # Configura la ventana Turtle y dibuja el tablero inicial.
