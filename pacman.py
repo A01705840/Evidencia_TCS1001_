@@ -8,10 +8,21 @@ Exercises
 4. Make the ghosts faster/slower.
 5. Make the ghosts smarter.
 """
-
 from random import choice
-from turtle import *
-
+from turtle import Turtle
+from turtle import bgcolor
+from turtle import clear
+from turtle import dot
+from turtle import done
+from turtle import goto
+from turtle import hideturtle
+from turtle import listen
+from turtle import onkey
+from turtle import ontimer
+from turtle import setup
+from turtle import tracer
+from turtle import up
+from turtle import update
 from freegames import floor, vector
 
 state = {'score': 0}
