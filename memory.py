@@ -69,6 +69,11 @@ def tap(x, y):
     taps += 1  # Se incrementa el número de taps
     print("Taps: ", taps)  # Se imprime el número de taps
 
+    # Checar si todos los mosaicos están descubiertos
+
+    if True not in hide:
+        print("Todos los mosaicos han sido descubiertos")
+
 
 # Dibuja el tablero.
 
