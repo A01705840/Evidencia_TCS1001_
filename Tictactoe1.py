@@ -10,6 +10,10 @@ from turtle import *
 from freegames import line
 
 
+# Define una matriz para representar el estado del tablero.
+board = [[' ' for _ in range(3)] for _ in range(3)]
+
+
 # Define una función para dibujar el tablero de Tictactoe.
 def grid():
     """Dibuja el tablero de Tictactoe."""
@@ -31,7 +35,7 @@ def drawx(x, y):
     line(x, y + 100, x + 100, y)  # Dibuja una línea diagonal (parte superior derecha a inferior izquierda).
    
 
-# Define una función para dibujar la "O" en una posición dada.
+# Define una función para dibujar la "O".
 def drawo(x, y):
     """Dibuja la "O" para el jugador."""
     color("pink")  # Modifica el color de la línea.
@@ -59,16 +63,27 @@ state = {'player': 0}
 players = [drawx, drawo]
 
 
+def is_valid_move(row, col):
+    """Verifica si una casilla es válida y no está ocupada."""
+    return 0 <= row < 3 and 0 <= col < 3 and board[row][col] == ' '
+
+
 # Define una función para manejar el evento de hacer clic en la pantalla.
 def tap(x, y):
     """Dibuja una X o una O en el cuadro donde se hizo clic."""
     x = floor(x)
     y = floor(y)
     player = state['player']
-    draw = players[player]
-    draw(x, y)
-    update()
-    state['player'] = not player
+    """Calcula la fila y columna correspondientes a la casilla clicada."""
+    row = int((y + 200) // 133)
+    col = int((x + 200) // 133)
+    if is_valid_move(row, col):
+        draw = players[player]
+        draw(x, y)
+        update()
+        board[row][col] = 'X' if player == 0 else 'O'
+        state['player'] = 1 - player  # Alterna al siguiente jugador
+
 
 
 # Configura la ventana Turtle y dibuja el tablero inicial.
