@@ -21,6 +21,7 @@ car = fg.path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
+taps = 0
 
 # Dibuja un cuadrado en la posición (x, y).
 
@@ -61,6 +62,12 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+
+    # Contador de taps
+
+    global taps
+    taps += 1  # Se incrementa el número de taps
+    print("Taps: ", taps)  # Se imprime el número de taps
 
 
 # Dibuja el tablero.
